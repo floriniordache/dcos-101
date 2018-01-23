@@ -4,6 +4,7 @@ import (
     "fmt"
     "net/http"
     "os"
+    "strings"
 
     "gopkg.in/redis.v4"
 )
@@ -25,6 +26,12 @@ func handler(w http.ResponseWriter, r *http.Request) {
     fmt.Fprintf(w, "<title>Welcome to DC/OS 101!</title><body>")
     fmt.Fprintf(w, "<h1>Welcome to DC/OS 101!</h1>")
     fmt.Fprintf(w, "<h1>Running on node '"+  os.Getenv("HOST") + "' and port '" + os.Getenv("PORT0") + "' </h1>")
+
+   for _, e := range os.Environ() {
+        pair := strings.Split(e, "=")
+        fmt.Fprintf(w, "<h1>" + pair[0] + "</h1>")
+    }
+
     fmt.Fprintf(w, "<h1>Add a new key:value pair</h1>"+
         "<form action=\"/save\" method=\"POST\">"+
         "<textarea name=\"key\">Key</textarea><br>"+
