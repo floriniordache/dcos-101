@@ -13,7 +13,7 @@
   "constraints": null,
   "fetch": [
     {
-      "uri": "https://raw.githubusercontent.com/joerg84/dcos-101/master/app2/app2"
+      "uri": "https://raw.githubusercontent.com/floriniordache/dcos-101/master/app2/app2"
     }
   ],
   "storeUrls": null,
