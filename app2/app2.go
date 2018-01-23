@@ -29,7 +29,11 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
    for _, e := range os.Environ() {
         pair := strings.Split(e, "=")
-        fmt.Fprintf(w, "<h1>" + pair[0] + "</h1>")
+        fmt.Fprintf(w, "<h1>" + pair[0])
+	if len(pair) > 1 {
+		fmt.Fprintf(w, "=" + pair[1])
+	}
+	fmt.Fprintf(w, "</h1>")
     }
 
     fmt.Fprintf(w, "<h1>Add a new key:value pair</h1>"+
